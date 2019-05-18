@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package cqupt_api;
+
+service BaiduocrController {
+  rpc GetAuthorization (GetAuthorizationReq) returns (GetAuthorizationRes);
+}
+
+message GetAuthorizationReq {
+  string method = 1;
+  string uri = 2;
+}
+
+message GetAuthorizationRes {
+  int32 code = 1;
+  string message = 2;
+  string authorization = 3;
+}
+
