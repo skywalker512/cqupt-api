@@ -17,3 +17,26 @@ message GetAuthorizationRes {
   string authorization = 3;
 }
 
+service QcloudsmsController {
+  rpc SendVerifyCode (SendVerifyCodeReq) returns (SendVerifyCodeRes);
+  rpc ValidateCode (ValidateCodeReq) returns (ValidateCodeRes);
+}
+
+message SendVerifyCodeReq {
+  string mobile = 1;
+}
+
+message SendVerifyCodeRes {
+  int32 code = 1;
+  string message = 2;
+}
+
+message ValidateCodeReq {
+  string mobile = 1;
+  string code = 2;
+}
+
+message ValidateCodeRes {
+  int32 code = 1;
+  string message = 2;
+}
