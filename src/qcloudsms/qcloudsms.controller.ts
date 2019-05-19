@@ -26,4 +26,15 @@ export class QcloudsmsController {
     }
     return { code: 200, message: '验证成功' }
   }
+
+  @GrpcMethod()
+  async sendFoundCardNotice(payload: { mobile: string, stuNum: string, locationName: string}) {
+    const {mobile, stuNum, locationName} = payload
+    try {
+      await this.qcloudsmsService.sendFoundCardNotice(mobile, stuNum, locationName)
+    } catch {
+      throw new RpcException({ code: 2004, message: '发送失败' })
+    }
+    return { code: 200, message: '发送成功' }
+  }
 }
