@@ -3,18 +3,15 @@ syntax = "proto3";
 package cqupt_api;
 
 service BaiduocrController {
-  rpc GetAuthorization (GetAuthorizationReq) returns (GetAuthorizationRes);
+  rpc GetOcrToken (GetOcrTokenReq) returns (GetOcrTokenRes);
 }
 
-message GetAuthorizationReq {
-  string method = 1;
-  string uri = 2;
-}
+message GetOcrTokenReq {}
 
-message GetAuthorizationRes {
+message GetOcrTokenRes {
   int32 code = 1;
   string message = 2;
-  string authorization = 3;
+  string accessToken = 3;
 }
 
 service QcloudsmsController {

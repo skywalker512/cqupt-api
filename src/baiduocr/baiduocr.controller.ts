@@ -9,9 +9,8 @@ export class BaiduocrController {
   ) {}
 
   @GrpcMethod()
-  async getAuthorization(payload: { method:string , uri: string }) {
-    const { method, uri } = payload
-    const authorization = await this.baiduocrService.getAuthorization(method, uri)
-    return { code: 200, message: '签名生成成功', authorization }
+  async getOcrToken(payload: {}) {
+    const accessToken = await this.baiduocrService.getOcrToken()
+    return { code: 200, message: '签名生成成功', accessToken }
   }
 }
