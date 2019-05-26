@@ -14,5 +14,7 @@ RUN apk --no-cache add tzdata ca-certificates && \
 
 WORKDIR /app
 RUN [ "yarn" ]
+RUN yarn global add @zeit/ncc@beta
+RUN ncc build ./src/main.ts -o dist
 
-CMD [ "yarn","start:prodts" ]
+CMD [ "node","./dist/index.js" ]

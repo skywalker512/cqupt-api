@@ -6,7 +6,16 @@ import { QcloudsmsModule } from './qcloudsms/qcloudsms.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [TypeOrmModule.forRoot() ,BaiduocrModule, QcloudsmsModule],
+  imports: [TypeOrmModule.forRoot({
+    keepConnectionAlive: true,
+    type: "postgres",
+    host: "postgres",
+    port: 5432,
+    username: "postgres",
+    database: "cqupt_api",
+    entities: ["./**/*.entity.ts"],
+    synchronize: true
+  }) ,BaiduocrModule, QcloudsmsModule],
   controllers: [AppController],
   providers: [AppService],
 })
