@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { BaiduocrModule } from './baiduocr/baiduocr.module';
 import { QcloudsmsModule } from './qcloudsms/qcloudsms.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { QcloudSms } from './qcloudsms/qcloudsms.entity';
+import { BaiduOcr } from './baiduocr/baiduocr.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -13,7 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     port: 5432,
     username: "postgres",
     database: "cqupt_api",
-    entities: ["./**/*.entity.ts"],
+    entities: [QcloudSms, BaiduOcr],
     synchronize: true
   }) ,BaiduocrModule, QcloudsmsModule],
   controllers: [AppController],
